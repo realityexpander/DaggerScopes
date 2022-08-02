@@ -27,15 +27,15 @@ class MainActivity : ComponentActivity() {
                     ) {
                         composable("video_call_screen") { backStackEntry ->
                             val parentEntry = remember(backStackEntry) {
-                                navController.getBackStackEntry("video_graph")
+                                navController.getBackStackEntry("video_graph") // runs when backStackEntry is changed
                             }
-                            val viewModel = hiltViewModel<SessionViewModel>(parentEntry)
+                            val viewModel = hiltViewModel<SessionViewModel>(parentEntry) // uses the SessionViewModel scope (Hilt)
                         }
                         composable("call_info_screen") { backStackEntry ->
                             val parentEntry = remember(backStackEntry) {
                                 navController.getBackStackEntry("video_graph")
                             }
-                            val viewModel = hiltViewModel<SessionViewModel>(parentEntry)
+                            val viewModel = hiltViewModel<SessionViewModel>(parentEntry) // uses the SessionViewModel scope (Hilt)
                         }
                     }
                 }
